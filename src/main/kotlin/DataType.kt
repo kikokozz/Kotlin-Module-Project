@@ -1,1 +1,3 @@
-interface DataType { val name: String }
+interface DataType {
+    val name: String
+}
