@@ -6,7 +6,7 @@ class ScannerInput {
         while (true) {
             try {
                 println("Введите число")
-                return Scanner(System.`in`).nextLine().toInt()
+                return readln().toInt()
             } catch (e: Exception) {
                 println("Пожалуйста, введите число")
             }
@@ -18,14 +18,11 @@ class ScannerInput {
     fun errorOrNot(message: Message): String {
         while (true) {
             println(message.create)
-            when (val data = Scanner(System.`in`).nextLine().toString()) {
-                "" -> {
-                    println(message.showError)
-                    continue
-                }
-
-                else -> return data
+            val data = readln().trim()
+            if (data.isNotEmpty()) {
+                return data
             }
+            println(message.showError)
         }
     }
 

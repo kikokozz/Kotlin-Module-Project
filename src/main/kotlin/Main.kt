@@ -12,7 +12,7 @@ fun start() {
         val listOfArchives: MutableList<Int> = Screen(archives).showScreen()
         when (val getAnswer = ScannerInput().inputAnswer()) {
             0 -> createArchive()
-            listOfArchives.lastIndex + 1 -> break
+            listOfArchives.size -> break
             in listOfArchives -> openNotes(archives[getAnswer], getAnswer)
             else -> println("Вы выбрали несуществующий элемент")
 
@@ -37,7 +37,7 @@ fun openNotes(archive: Archives, archiveNumber: Int) {
         val listOfNotes: MutableList<Int> = Screen(archive.notes).showScreen()
         when (val getAnswer = ScannerInput().inputAnswer()) {
             0 -> createNote(archiveNumber)
-            listOfNotes.lastIndex + 1 -> break
+            listOfNotes.size -> break
             in listOfNotes -> showNote(archive.notes, getAnswer)
             else -> println("Вы выбрали несуществующий элемент")
         }
